@@ -1,0 +1,12 @@
+[package]
+name = "media-sitegen"
+version = "0.1.0"
+authors = ["Marcus Bitzl <marcus@bitzl.io>"]
+edition = "2018"
+
+[dependencies]
+clap = "*"
+serde = { version = "1.0", features = ["derive"] }
+# serde_json = "1.0"
+tera = "0.11"
+mime_guess = "1.8.7"

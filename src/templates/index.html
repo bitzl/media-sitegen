@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{{ title }}</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+            {% for media_file in media_files %}
+                <div class="col m4">
+                    <div class="card">
+                        <div class="card-content">               
+                            {% if media_file.media == "Audio" %}
+                            <audio controls>
+                                <source src="{{media_file.filename}}" type="{{media_file.mime_type}}">
+                            </audio>
+                            {% elif media_file.media == "Video" %}
+                            <video controls>
+                                <source src="{{media_file.filename}}" type="{{media_file.mime_type}}">
+                            </video>
+                            {% else %}
+                            <a href="{{media_file.filename}}">{{media_file.filename}} ({{media_file.mime_type}})</a>
+                            {% endif %}
+                        </div>
+                        <div class="card-content">
+                            <span class="card-title">{{ media_file.filename }}</span>
+                            {% if media_file.comment %}
+                            <p>{{ media_file.comment }}</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+            </div>
+        </div>
+    </body>
+</html> 
